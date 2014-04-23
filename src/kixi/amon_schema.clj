@@ -54,7 +54,6 @@
   {:entityId s/Str
    (s/optional-key :parentId) s/Str
    (s/optional-key :description) s/Str
-   ;; (s/optional-key :meteringPointId) s/Str
    :privacy (s/enum "private" "public")
    (s/optional-key :location) Location
    (s/optional-key :metadata) {s/Keyword s/Any}
@@ -69,9 +68,7 @@
 (def BaseEntity
   {:propertyCode s/Str
    :projectId s/Str
-   (s/optional-key :deviceIds) [s/Str]
-   ;; (s/optional-key :meteringPointIds) [s/Str] ;; would like to remove
-   })
+   (s/optional-key :deviceIds) [s/Str]})
 
 (def Entity
   (s/either
