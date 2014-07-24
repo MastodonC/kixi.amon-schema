@@ -1,21 +1,39 @@
 (ns kixi.amon-schema
-  (:require [schema.core :as s]
-            [schema-contrib.core :as sc]))
+  (:require [schema.core :as s]))
 
 ;;
 ;; Types
 ;;
 
+(def BaseMeasurement
+  {:type s/Str
+   :timestamp s/Str})
+
 (def Measurement
   (s/either
-   {(s/required-key :type) s/Str
-    (s/required-key :timestamp) s/Str
-    (s/required-key :value) s/Str 
-    (s/optional-key :error) s/Str}
-   {(s/required-key :type) s/Str
-    (s/required-key :timestamp) s/Str
-    (s/required-key :error) s/Str
-    (s/optional-key :value) s/Str}))
+   (merge
+    BaseMeasurement
+    {:value s/Str
+     (s/optional-key :error) s/Str})
+   (merge
+    BaseMeasurement
+    {:error s/Str
+     (s/optional-key :value) s/Str)))
+
+(def Measurements
+  {:measurements [Measurement]})
+
+(def Devices
+  "A schema for devices."
+  {:entity_id s/Str
+   :description s/Str
+   :metadata {:passivrole s/Str}
+   :readings [{:type s/Str
+               :resolution s/Str
+               :accuracy s/Str
+               :period (s/enum "INSTANT" "PULSE" "CUMULATIVE")
+               :unit s/Str
+               (s/optional-key :user_metadata) {s/Str s/Str}}]})
 
 (def Reading
   {:type s/Str
@@ -44,13 +62,7 @@
    {:name s/Str}
    {}))
 
-(def Dataset
-  {:entity_id s/Str
-   :operation s/Str
-   :name s/Str
-   :members [s/Str]})
-
-(def Device
+(def BaseDevice
   {:entity_id s/Str
    :description s/Str
    :metadata {:passivrole s/Str}
@@ -61,15 +73,39 @@
                :unit s/Str
                (s/optional-key :user_metadata) {s/Str s/Str}}]})
 
-(def Entity
+(def Device
+  (s/either
+   BaseDevice
+   (merge {:deviceId s/Str} BaseDevice)))
+
+(def BaseEntity
   {:project_id s/Str
    :property_code s/Str
    :device_ids [s/Str]
    :metering_point_ids [s/Str]})
 
-(def Project
+(def Entity
+  (s/either
+   BaseEntity
+   (merge {:entityId s/Str} BaseEntity)))
+
+(def BaseProject
   {:name s/Str
-   :programme_id s/Str})
+   :programmeId s/Str})
+
+(def Project
+  (s/either
+   BaseProject
+   (merge
+    BaseProject
+    {:projectId s/Str})))
+
+(def BaseProgramme
+  {:name s/Str})
 
 (def Programme
-  {:name s/Str})
+  (s/either
+   BaseProgramme
+   (merge
+    BaseProgramme
+    {:programmeId s/Str})))
