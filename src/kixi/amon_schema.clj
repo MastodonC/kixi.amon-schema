@@ -6,22 +6,16 @@
 ;; Types
 ;;
 
-(def BaseMeasurement
-  {:type s/Str
-   :timestamp sc/ISO-Date-Time})
-
 (def Measurement
   (s/either
-   (merge
-    BaseMeasurement
-    {:value s/Num
-     (s/optional-key :aggregated) s/Bool})
-   (merge
-    BaseMeasurement
-    {:error s/Str})))
-
-(def Measurements
-  {:measurements [Measurement]})
+   {(s/required-key :type) s/Str
+    (s/required-key :timestamp) s/Str
+    (s/required-key :value) s/Str 
+    (s/optional-key :error) s/Str}
+   {(s/required-key :type) s/Str
+    (s/required-key :timestamp) s/Str
+    (s/required-key :error) s/Str
+    (s/optional-key :value) s/Str}))
 
 (def Reading
   {:type s/Str
@@ -50,48 +44,32 @@
    {:name s/Str}
    {}))
 
-(def BaseDevice
-  {:entityId s/Str
-   (s/optional-key :parentId) s/Str
-   (s/optional-key :description) s/Str
-   :privacy (s/enum "private" "public")
-   (s/optional-key :location) Location
-   (s/optional-key :metadata) {s/Keyword s/Any}
-   (s/optional-key :readings) Readings
-   (s/optional-key :measurements) Measurements})
+(def Dataset
+  {:entity_id s/Str
+   :operation s/Str
+   :name s/Str
+   :members [s/Str]})
 
 (def Device
-  (s/either
-   BaseDevice
-   (merge {:deviceId s/Str} BaseDevice)))
-
-(def BaseEntity
-  {:propertyCode s/Str
-   :projectId s/Str
-   (s/optional-key :deviceIds) [s/Str]})
+  {:entity_id s/Str
+   :description s/Str
+   :metadata {:passivrole s/Str}
+   :readings [{:type s/Str
+               :resolution s/Str ;;stringified number
+               :accuracy s/Str ;;stringified number
+               :period (s/enum "INSTANT" "PULSE" "CUMULATIVE")
+               :unit s/Str
+               (s/optional-key :user_metadata) {s/Str s/Str}}]})
 
 (def Entity
-  (s/either
-   BaseEntity
-   (merge {:entityId s/Str} BaseEntity)))
-
-(def BaseProject
-  {:name s/Str
-   :programmeId s/Str})
+  {:project_id s/Str
+   :property_code s/Str
+   :device_ids [s/Str]
+   :metering_point_ids [s/Str]})
 
 (def Project
-  (s/either
-   BaseProject
-   (merge
-    BaseProject
-    {:projectId s/Str})))
-
-(def BaseProgramme
-  {:name s/Str})
+  {:name s/Str
+   :programme_id s/Str})
 
 (def Programme
-  (s/either
-   BaseProgramme
-   (merge
-    BaseProgramme
-    {:programmeId s/Str})))
+  {:name s/Str})
