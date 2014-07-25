@@ -70,7 +70,7 @@
 (def BaseDevice
   {:entity_id s/Str
    :description s/Str
-   :metadata {:passivrole s/Str}
+   :metadata {s/Keyword s/Str}
    :readings [BaseReading]})
 
 (def Device
@@ -79,7 +79,7 @@
    {:deviceId s/Str
     :entity_id s/Str
     :description s/Str
-    :metadata {:passivrole s/Str}
+    :metadata {s/Keyword s/Str}
     :readings [Reading]}))
 
 (def BaseEntity
