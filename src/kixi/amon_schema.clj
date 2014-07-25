@@ -1,5 +1,6 @@
 (ns kixi.amon-schema
-  (:require [schema.core :as s]))
+  (:require [schema.core :as s]
+            [schema-contrib.core :as sc]))
 
 ;;
 ;; Types
@@ -13,7 +14,7 @@
 
 (def BaseMeasurement
   {:type s/Str
-   :timestamp s/Str})
+   :timestamp sc/ISO-Date-Time})
 
 (def Measurement
   (s/either
@@ -24,18 +25,18 @@
    (merge
     BaseMeasurement
     {:error s/Str
-     (s/optional-key :value) s/Str))))
+     (s/optional-key :value) s/Str})))
 
 (def Measurements
   {:measurements [Measurement]})
 
 (def BaseReading
-  {{:type s/Str
-    :resolution s/Str
-    :accuracy s/Str
-    :period (s/enum "INSTANT" "PULSE" "CUMULATIVE")
-    :unit s/Str
-    (s/optional-key :user_metadata) {s/Str s/Str}]})
+  {:type s/Str
+   :resolution s/Str
+   :accuracy s/Str
+   :period (s/enum "INSTANT" "PULSE" "CUMULATIVE")
+   :unit s/Str
+   (s/optional-key :user_metadata) {s/Str s/Str}})
 
 (def Reading
   (s/either
