@@ -72,7 +72,7 @@
 (def Device
   (s/either
    BaseDevice
-   {:deviceId s/Str
+   {:device_id s/Str
     :entity_id s/Str
     :description s/Str
     :metadata {s/Keyword s/Any}
@@ -622,11 +622,11 @@
    BaseEntity
    (merge 
     BaseEntity
-    {:entityId s/Str})))
+    {:entity_id s/Str})))
 
 (def BaseProject
   {:name s/Str
-   :programmeId s/Str
+   :programme_id s/Str
    (s/optional-key :created_at) s/Str
    (s/optional-key :description) s/Str
    (s/optional-key :organisation) s/Str
@@ -641,7 +641,7 @@
    BaseProject
    (merge
     BaseProject
-    {:projectId s/Str})))
+    {:project_id s/Str})))
 
 (def BaseProgramme
   {:name s/Str
@@ -660,4 +660,4 @@
    BaseProgramme
    (merge
     BaseProgramme
-    {:programmeId s/Str})))
+    {:programme_id s/Str})))
