@@ -14,14 +14,14 @@
 
 (def BaseMeasurement
   {:type s/Str
-   :timestamp sc/ISO-Date-Time})
+   :timestamp sc/ISO-Date-Time
+   :value s/Str})
 
 (def Measurement
   (s/either
    (merge
     BaseMeasurement
-    {:value s/Str
-     (s/optional-key :error) s/Str})
+    {(s/optional-key :error) s/Str})
    (merge
     BaseMeasurement
     {:error s/Str
