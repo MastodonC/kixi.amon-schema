@@ -604,15 +604,9 @@
    (s/optional-key :address_country) s/Str
    (s/optional-key :address_county) s/Str
    (s/optional-key :address_region) s/Str
-   (s/optional-key :address_street_two) s/Str
-   (s/optional-key :calculated_fields_labels) {s/Str s/Str}
-   (s/optional-key :calculated_fields_last_calc) {s/Str s/Str}
-   (s/optional-key :calculated_fields_values) {s/Str s/Str}
-   (s/optional-key :csv_uploads) [s/Str]
-   (s/optional-key :documents) [s/Str]
+   (s/optional-key :address_street_two) s/Str  
    (s/optional-key :name) s/Str
    (s/optional-key :notes) [s/Str]
-   (s/optional-key :photos) [s/Str]
    (s/optional-key :property_data) s/Str
    (s/optional-key :retrofit_completion_date) s/Str
    (s/optional-key :user_id) s/Str})
@@ -622,7 +616,13 @@
    BaseEntity
    (merge 
     BaseEntity
-    {:entity_id s/Str})))
+    {:entity_id s/Str
+     (s/optional-key :calculated_fields_labels) {s/Str s/Str}
+     (s/optional-key :calculated_fields_last_calc) {s/Str s/Str}
+     (s/optional-key :calculated_fields_values) {s/Str s/Str}
+     (s/optional-key :csv_uploads) [s/Str]
+     (s/optional-key :documents) [s/Str]
+     (s/optional-key :photos) [s/Str]})))
 
 (def BaseProject
   {:name s/Str
