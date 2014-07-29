@@ -48,7 +48,7 @@
    (s/optional-key :median) s/Str
    (s/optional-key :min) s/Str
    (s/optional-key :status) s/Str
-   (s/optional-key :synthetic) s/Str
+   (s/optional-key :synthetic) s/Bool
    (s/optional-key :user_id) s/Str})
 
 (def LatLong
@@ -72,11 +72,14 @@
 (def Device
   (s/either
    BaseDevice
-   {:device_id s/Str
-    :entity_id s/Str
-    :description s/Str
-    :metadata {s/Keyword s/Any}
-    :readings [Reading]}))
+   (merge
+    BaseDevice
+    {:device_id s/Str
+     (s/optional-key :name) s/Str
+     (s/optional-key :privacy) s/Str
+     (s/optional-key :metering_point_id) s/Str
+     (s/optional-key :parent_id) s/Str
+     (s/optional-key :synthetic) s/Bool})))
 
 (def profile-data-schema
   {(s/optional-key :id) s/Str
@@ -615,7 +618,7 @@
    BaseEntity
    (merge 
     BaseEntity
-    {:entity_id s/Str
+    {:id s/Str
      (s/optional-key :profile) [Profile]
      (s/optional-key :calculated_fields_labels) {s/Str s/Str}
      (s/optional-key :calculated_fields_last_calc) {s/Str s/Str}
@@ -641,7 +644,8 @@
    BaseProject
    (merge
     BaseProject
-    {:project_id s/Str})))
+    {:id s/Str
+     (s/optional-key :properties) s/Str})))
 
 (def BaseProgramme
   {:name s/Str
@@ -660,4 +664,5 @@
    BaseProgramme
    (merge
     BaseProgramme
-    {:programme_id s/Str})))
+    {:id s/Str
+     (s/optional-key :projects) s/Str})))
