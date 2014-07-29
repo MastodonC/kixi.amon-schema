@@ -75,11 +75,11 @@
    (merge
     BaseDevice
     {:device_id s/Str
-     :name s/Str
-     :privacy s/Str
-     :metering_point_id s/Str
-     :parent_id s/Str
-     :synthetic s/Bool})))
+     (s/optional-key :name) s/Str
+     (s/optional-key :privacy) s/Str
+     (s/optional-key :metering_point_id) s/Str
+     (s/optional-key :parent_id) s/Str
+     (s/optional-key :synthetic) s/Bool})))
 
 (def profile-data-schema
   {(s/optional-key :id) s/Str
@@ -645,7 +645,7 @@
    (merge
     BaseProject
     {:id s/Str
-     :properties s/Str})))
+     (s/optional-key :properties) s/Str})))
 
 (def BaseProgramme
   {:name s/Str
@@ -665,4 +665,4 @@
    (merge
     BaseProgramme
     {:id s/Str
-     :projects s/Str})))
+     (s/optional-key :projects) s/Str})))
