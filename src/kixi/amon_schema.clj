@@ -600,7 +600,7 @@
    :property_code s/Str
    :device_ids [s/Str]
    :metering_point_ids [s/Str]
-   (s/optional-key :profile) [Profile]
+   ;(s/optional-key :profile) [Profile]
    (s/optional-key :address_country) s/Str
    (s/optional-key :address_county) s/Str
    (s/optional-key :address_region) s/Str
