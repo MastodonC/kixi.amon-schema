@@ -55,7 +55,9 @@
    BaseReading
    (merge
     BaseReading
-    {(s/optional-key :actual_annual) s/Str})))
+    {(s/optional-key :actual_annual) s/Str
+     (s/optional-key :upper_ts) s/Str
+     (s/optional-key :lower_ts) s/Str})))
 
 (def LatLong
   {:latitude s/Num
