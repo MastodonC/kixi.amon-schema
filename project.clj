@@ -1,4 +1,4 @@
-(defproject kixi/amon-schema "0.1.2"
+(defproject kixi/amon-schema "0.1.3-SNAPSHOT"
   :description "A Prismatic Schema for AMON v4 requests and responses."
   :url "http://github.com/MastodonC/kixi.amon-schema"
   :license {:name "Eclipse Public License"
