@@ -48,16 +48,16 @@
    (s/optional-key :min) s/Str
    (s/optional-key :status) s/Str
    (s/optional-key :synthetic) s/Bool
-   (s/optional-key :user_id) s/Str})
+   (s/optional-key :user_id) s/Str
+   (s/optional-key :actual_annual) s/Bool})
 
 (def Reading
   (s/either
    BaseReading
    (merge
     BaseReading
-    {(s/optional-key :actual_annual) s/Str
-     (s/optional-key :upper_ts) s/Str
-     (s/optional-key :lower_ts) s/Str})))
+    {(s/optional-key :upper_ts) sc/ISO-Date-Time
+     (s/optional-key :lower_ts) sc/ISO-Date-Time})))
 
 (def LatLong
   {:latitude s/Num
@@ -73,26 +73,22 @@
 (def BaseDevice
   {:entity_id s/Str
    :description s/Str
-   :metadata {s/Keyword s/Any}
    (s/optional-key :location) Location
-   :readings [BaseReading]})
+   (s/optional-key :metadata) {s/Keyword s/Any}
+   (s/optional-key :readings) [Reading]
+   (s/optional-key :name) s/Str
+   (s/optional-key :privacy) s/Str
+   (s/optional-key :metering_point_id) s/Str
+   (s/optional-key :parent_id) s/Str
+   (s/optional-key :synthetic) s/Bool})
 
 (def Device
   (s/either
    BaseDevice
    (merge
     ;;BaseDevice but with Reading instead of BaseReading
-    {:entity_id s/Str
-     :description s/Str
-     :metadata {s/Keyword s/Any}
-     (s/optional-key :location) Location
-     :readings [Reading]}
     {:device_id s/Str
-     (s/optional-key :name) s/Str
-     (s/optional-key :privacy) s/Str
-     (s/optional-key :metering_point_id) s/Str
-     (s/optional-key :parent_id) s/Str
-     (s/optional-key :synthetic) s/Bool})))
+     BaseDevice})))
 
 (def profile-data-schema
   {(s/optional-key :id) s/Str
@@ -226,9 +222,8 @@
    (s/optional-key :area) s/Str
    (s/optional-key :location) s/Str
    (s/optional-key :uvalue) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-   })
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def thermal-images-schema
   {})
@@ -238,9 +233,8 @@
    (s/optional-key :storey) s/Str
    (s/optional-key :heat_loss_w_per_k) s/Str
    (s/optional-key :heat_requirement_kwth_per_year) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-   })
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def wall-schema
   {(s/optional-key :wall_type) s/Str
@@ -254,9 +248,8 @@
    (s/optional-key :uvalue) s/Str
    (s/optional-key :location) s/Str
    (s/optional-key :area) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 
 (def roof-schema
@@ -276,9 +269,8 @@
    (s/optional-key :insulation_product) s/Str
    (s/optional-key :uvalue) s/Str
    (s/optional-key :uvalue_derived) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 
 (def floor-schema
@@ -291,9 +283,8 @@
    (s/optional-key :insulation_product) s/Str
    (s/optional-key :uvalue) s/Str
    (s/optional-key :uvalue_derived) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def roof-room-schema
   {(s/optional-key :location) s/Str
@@ -308,9 +299,8 @@
    (s/optional-key :insulation_product) s/Str
    (s/optional-key :uvalue) s/Str
    (s/optional-key :uvalue_derived) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 
 (def door-set-schema
@@ -322,16 +312,14 @@
    (s/optional-key :area) s/Str
    (s/optional-key :location) s/Str
    (s/optional-key :uvalue) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def extension-schema
   {(s/optional-key :age) s/Str
    (s/optional-key :construction_date) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def conservatory-schema
   {(s/optional-key :conservatory_type) s/Str
@@ -339,9 +327,8 @@
    (s/optional-key :double_glazed) s/Str
    (s/optional-key :glazed_perimeter) s/Str
    (s/optional-key :height) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def wind-turbine-schema
   {(s/optional-key :turbine_type) s/Str
@@ -363,9 +350,8 @@
    (s/optional-key :est_annual_generation) s/Str
    (s/optional-key :est_percentage_requirement_met) s/Str
    (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def small-hydro-schema
   {(s/optional-key :hydro_type) s/Str
@@ -383,9 +369,8 @@
    (s/optional-key :est_annual_generation) s/Str
    (s/optional-key :est_percentage_requirement_met) s/Str
    (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def photovoltaic-schema
   {(s/optional-key :percentage_roof_covered) s/Str
@@ -407,10 +392,9 @@
    (s/optional-key :est_annual_generation) s/Str
    (s/optional-key :est_percentage_requirement_met) s/Str
    (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-   (s/optional-key :performance) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time
+   (s/optional-key :performance) s/Str})
 
 (def solar-thermal-schema
   {(s/optional-key :solar_type) s/Str
@@ -426,9 +410,8 @@
    (s/optional-key :pitch) s/Str
    (s/optional-key :est_annual_generation) s/Str
    (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def heat-pump-schema
   {(s/optional-key :heat_pump_type) s/Str
@@ -448,9 +431,8 @@
    (s/optional-key :est_percentage_requirement_met) s/Str
    (s/optional-key :dhw) s/Str
    (s/optional-key :est_percentage_dhw_requirement_met) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def biomass-schema
   {(s/optional-key :biomass_type) s/Str
@@ -463,9 +445,8 @@
    (s/optional-key :percentage_efficiency_from_spec) s/Str
    (s/optional-key :est_annual_generation) s/Str
    (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def chp-schema
   {(s/optional-key :chp_type) s/Str
@@ -479,9 +460,8 @@
    (s/optional-key :est_annual_generation) s/Str
    (s/optional-key :est_percentage_thermal_requirement_met) s/Str
    (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def heating-system-schema
   {(s/optional-key :heating_type) s/Str
@@ -517,10 +497,9 @@
    (s/optional-key :inspector_engineers_name) s/Str
    (s/optional-key :inspector_registration_number) s/Str
    (s/optional-key :inspection_date) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-   (s/optional-key :efficiency) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time
+   (s/optional-key :efficiency) s/Str})
 
 (def hot-water-system-schema
   {(s/optional-key :dhw_type) s/Str
@@ -535,18 +514,16 @@
    (s/optional-key :cylinder_insulation_thickness_other) s/Str
    (s/optional-key :cylinder_thermostat) s/Str
    (s/optional-key :controls_same_for_all_zones) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def low-energy-light-schema
   {(s/optional-key :light_type) s/Str
    (s/optional-key :light_type_other) s/Str
    (s/optional-key :bed_index) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-   (s/optional-key :proportion) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time
+   (s/optional-key :proportion) s/Str})
 
 (def ventilation-system-schema
   {(s/optional-key :approach) s/Str
@@ -567,9 +544,8 @@
    (s/optional-key :installer_registration_number) s/Str
    (s/optional-key :commissioning_date) s/Str
    (s/optional-key :total_installed_area) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
-})
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time})
 
 (def airflow-measurement-schema
   {(s/optional-key :reference) s/Str
@@ -578,13 +554,12 @@
    (s/optional-key :inspector_engineers_name) s/Str
    (s/optional-key :inspector_registration_number) s/Str
    (s/optional-key :inspection_date) s/Str
-   (s/optional-key :created_at) s/Str
-   (s/optional-key :updated_at) s/Str
+   (s/optional-key :created_at) sc/ISO-Date-Time
+   (s/optional-key :updated_at) sc/ISO-Date-Time
    (s/optional-key :measured_low) s/Str
    (s/optional-key :design_low) s/Str
    (s/optional-key :measured_high) s/Str
-   (s/optional-key :design_high) s/Str
-})
+   (s/optional-key :design_high) s/Str})
 
 (def Profile
   {(s/optional-key :profile-data-schema) [profile-data-schema]
@@ -614,25 +589,25 @@
 (def BaseEntity
   {:project_id s/Str
    :property_code s/Str
-   :device_ids [s/Str]
-   :metering_point_ids [s/Str]
+   (s/optional-key :device_ids) [s/Str]
+   (s/optional-key :metering_point_ids) [s/Str]
    (s/optional-key :address_country) s/Str
    (s/optional-key :address_county) s/Str
    (s/optional-key :address_region) s/Str
-   (s/optional-key :address_street_two) s/Str  
+   (s/optional-key :address_street_two) s/Str
    (s/optional-key :name) s/Str
    (s/optional-key :notes) [s/Str]
-   (s/optional-key :property_data) s/Str
+   (s/optional-key :profile) [Profile]
+   (s/optional-key :property_data) {s/Keyword s/Any}
    (s/optional-key :retrofit_completion_date) s/Str
    (s/optional-key :user_id) s/Str})
 
 (def Entity
   (s/either
    BaseEntity
-   (merge 
+   (merge
     BaseEntity
-    {:id s/Str
-     (s/optional-key :profile) [Profile]
+    {:entity_id s/Str
      (s/optional-key :calculated_fields_labels) {s/Str s/Str}
      (s/optional-key :calculated_fields_last_calc) {s/Str s/Str}
      (s/optional-key :calculated_fields_values) {s/Str s/Str}
@@ -643,13 +618,13 @@
 (def BaseProject
   {:name s/Str
    :programme_id s/Str
-   (s/optional-key :created_at) s/Str
+   (s/optional-key :created_at) sc/ISO-Date-Time
    (s/optional-key :description) s/Str
    (s/optional-key :organisation) s/Str
    (s/optional-key :project_code) s/Str
    (s/optional-key :project_type) s/Str
    (s/optional-key :type_of) s/Str
-   (s/optional-key :updated_at) s/Str
+   (s/optional-key :updated_at) sc/ISO-Date-Time
    (s/optional-key :user_id) s/Str})
 
 (def Project
@@ -657,19 +632,19 @@
    BaseProject
    (merge
     BaseProject
-    {:id s/Str
-     (s/optional-key :properties) s/Str})))
+    {:project_id s/Str
+     (s/optional-key :properties) [Entity]})))
 
 (def BaseProgramme
   {:name s/Str
-   (s/optional-key :created_at) s/Str
+   (s/optional-key :created_at) sc/ISO-Date-Time
    (s/optional-key :description) s/Str
    (s/optional-key :home_page_text) s/Str
    (s/optional-key :lead_organisations) s/Str
    (s/optional-key :lead_page_text) s/Str
    (s/optional-key :leaders) s/Str
    (s/optional-key :public_access) s/Str
-   (s/optional-key :updated_at) s/Str
+   (s/optional-key :updated_at) sc/ISO-Date-Time
    (s/optional-key :user_id) s/Str})
 
 (def Programme
@@ -677,5 +652,5 @@
    BaseProgramme
    (merge
     BaseProgramme
-    {:id s/Str
-     (s/optional-key :projects) s/Str})))
+    {:programme_id s/Str
+     (s/optional-key :projects) [Project]})))
