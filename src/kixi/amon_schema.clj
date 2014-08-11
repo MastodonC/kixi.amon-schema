@@ -32,11 +32,11 @@
 
 (def BaseReading
   {:type s/Str
-   :resolution s/Str
-   :accuracy s/Str
-   :period (s/enum "INSTANT" "PULSE" "CUMULATIVE")
-   :unit s/Str
-   (s/optional-key :user_metadata) {s/Str s/Str}
+   (s/optional-key :resolution) s/Str
+   (s/optional-key :accuracy) s/Str
+   (s/optional-key :period) (s/enum "INSTANT" "PULSE" "CUMULATIVE")
+   (s/optional-key :unit) s/Str
+   (s/optional-key :user_metadata) {s/Any s/Any}
    (s/optional-key :alias) s/Str
    (s/optional-key :correction) s/Str
    (s/optional-key :corrected_unit) s/Str
