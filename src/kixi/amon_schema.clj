@@ -30,7 +30,7 @@
 (def Measurements
   {:measurements [Measurement]})
 
-(def Reading
+(def BaseReading
   {:type s/Str
    :resolution s/Str
    :accuracy s/Str
@@ -38,7 +38,6 @@
    :unit s/Str
    (s/optional-key :user_metadata) {s/Str s/Str}
    (s/optional-key :alias) s/Str
-   (s/optional-key :actual_annual) s/Str
    (s/optional-key :correction) s/Str
    (s/optional-key :corrected_unit) s/Str
    (s/optional-key :correction_factor) s/Str
@@ -50,6 +49,15 @@
    (s/optional-key :status) s/Str
    (s/optional-key :synthetic) s/Bool
    (s/optional-key :user_id) s/Str})
+
+(def Reading
+  (s/either
+   BaseReading
+   (merge
+    BaseReading
+    {(s/optional-key :actual_annual) s/Str
+     (s/optional-key :upper_ts) s/Str
+     (s/optional-key :lower_ts) s/Str})))
 
 (def LatLong
   {:latitude s/Num
@@ -67,13 +75,18 @@
    :description s/Str
    :metadata {s/Keyword s/Any}
    (s/optional-key :location) Location
-   :readings [Reading]})
+   :readings [BaseReading]})
 
 (def Device
   (s/either
    BaseDevice
    (merge
-    BaseDevice
+    ;;BaseDevice but with Reading instead of BaseReading
+    {:entity_id s/Str
+     :description s/Str
+     :metadata {s/Keyword s/Any}
+     (s/optional-key :location) Location
+     :readings [Reading]}
     {:device_id s/Str
      (s/optional-key :name) s/Str
      (s/optional-key :privacy) s/Str
