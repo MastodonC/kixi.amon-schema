@@ -87,8 +87,8 @@
    BaseDevice
    (merge
     ;;BaseDevice but with Reading instead of BaseReading
-    {:device_id s/Str
-     BaseDevice})))
+    {:device_id s/Str}
+    BaseDevice)))
 
 (def profile-data-schema
   {(s/optional-key :id) s/Str
