@@ -92,499 +92,500 @@
     BaseDevice)))
 
 (def profile-data-schema
-  {(s/optional-key :id) s/Str
-   (s/optional-key :event_type) s/Str
-   (s/optional-key :occupancy_under_18) s/Str
-   (s/optional-key :onsite_days_new_build) s/Str
-   (s/optional-key :flat_floor_heat_loss_type) s/Str
-   (s/optional-key :best_u_value_for_walls) s/Str
-   (s/optional-key :estimated_cost_new_build) s/Str
-   (s/optional-key :ter) s/Str
-   (s/optional-key :sap_version_year) s/Str
-   (s/optional-key :total_envelope_area) s/Str
-   (s/optional-key :sap_regulations_date) s/Str
-   (s/optional-key :multiple_glazing_area_percentage) s/Str
-   (s/optional-key :flat_floor_position) s/Str
-   (s/optional-key :modelling_software_methods_used) s/Str
-   (s/optional-key :co_heating_loss) s/Str
-   (s/optional-key :sap_assessor) s/Str
-   (s/optional-key :inadequate_heating) s/Str
-   (s/optional-key :profile_noise) s/Str
-   (s/optional-key :multiple_glazing_type) s/Str
-   (s/optional-key :sap_software) s/Str
-   (s/optional-key :profile_bus_summary_index) s/Str
-   (s/optional-key :thermal_bridging_strategy) s/Str
-   (s/optional-key :sealed_fireplaces) s/Str
-   (s/optional-key :flat_floors_in_block) s/Str
-   (s/optional-key :property_id) s/Str
-   (s/optional-key :air_tightness_assessor) s/Str
-   (s/optional-key :glazing_area_glass_only) s/Str
-   (s/optional-key :final_cost_new_build) s/Str
-   (s/optional-key :lighting_strategy) s/Str
-   (s/optional-key :fabric_energy_efficiency) s/Str
-   (s/optional-key :habitable_rooms) s/Str
-   (s/optional-key :profile_needs) s/Str
-   (s/optional-key :co_heating_assessor) s/Str
-   (s/optional-key :best_u_value_for_other) s/Str
-   (s/optional-key :renewable_contribution_heat) s/Str
-   (s/optional-key :total_area) s/Str
-   (s/optional-key :profile_temperature_in_summer) s/Str
-   (s/optional-key :draught_proofing_location) s/Str
-   (s/optional-key :heat_storage_present) s/Str
-   (s/optional-key :profile_productivity) s/Str
-   (s/optional-key :number_of_storeys) s/Str
-   (s/optional-key :passive_solar_strategy) s/Str
-   (s/optional-key :external_perimeter) s/Str
-   (s/optional-key :intervention_completion_date) s/Str
-   (s/optional-key :heat_loss_parameter_hlp) s/Str
-   (s/optional-key :electricity_storage_present) s/Str
-   (s/optional-key :roof_rooms_present) s/Str
-   (s/optional-key :primary_energy_requirement) s/Str
-   (s/optional-key :dwelling_u_value_other) s/Str
-   (s/optional-key :ventilation_approach) s/Str
-   (s/optional-key :construction_time_new_build) s/Str
-   (s/optional-key :draught_proofing) s/Str
-   (s/optional-key :frame_type) s/Str
-   (s/optional-key :appliances_strategy) s/Str
-   (s/optional-key :bedroom_count) s/Str
-   (s/optional-key :co_heating_equipment) s/Str
-   (s/optional-key :flat_heat_loss_corridor_other) s/Str
-   (s/optional-key :ber) s/Str
-   (s/optional-key :profile_image_to_visitors) s/Str
-   (s/optional-key :air_tightness_equipment) s/Str
-   (s/optional-key :innovation_approaches) s/Str
-   (s/optional-key :orientation) s/Str
-   (s/optional-key :total_budget_new_build) s/Str
-   (s/optional-key :best_u_value_for_floors) s/Str
-   (s/optional-key :completeness) s/Str
-   (s/optional-key :onsite_days) s/Str
-   (s/optional-key :water_saving_strategy) s/Str
-   (s/optional-key :airtightness_and_ventilation_strategy) s/Str
-   (s/optional-key :glazing_area_percentage) s/Str
-   (s/optional-key :occupant_change) s/Str
-   (s/optional-key :intention_ofpassvhaus) s/Str
-   (s/optional-key :profile_health) s/Str
-   (s/optional-key :occupancy_over_60) s/Str
-   (s/optional-key :annual_heating_load) s/Str
-   (s/optional-key :intervention_start_date) s/Str
-   (s/optional-key :profile_design) s/Str
-   (s/optional-key :gross_internal_area) s/Str
-   (s/optional-key :profile_air_in_winter) s/Str
-   (s/optional-key :intervention_description) s/Str
-   (s/optional-key :mains_gas) s/Str
-   (s/optional-key :profile_lightning) s/Str
-   (s/optional-key :multiple_glazing_type_other) s/Str
-   (s/optional-key :total_volume) s/Str
-   (s/optional-key :sap_version_issue) s/Str
-   (s/optional-key :profile_comfort) s/Str
-   (s/optional-key :heated_habitable_rooms) s/Str
-   (s/optional-key :open_fireplaces) s/Str
-   (s/optional-key :occupancy_18_to_60) s/Str
-   (s/optional-key :flat_length_sheltered_wall) s/Str
-   (s/optional-key :planning_considerations) s/Str
-   (s/optional-key :profile_bus_report_url) s/Str
-   (s/optional-key :design_guidance) s/Str
-   (s/optional-key :sap_rating) s/Str
-   (s/optional-key :overheating_cooling_strategy) s/Str
-   (s/optional-key :best_u_value_for_windows) s/Str
-   (s/optional-key :used_passivehaus_principles) s/Str
-   (s/optional-key :moisture_condensation_mould_strategy) s/Str
-   (s/optional-key :ventilation_approach_other) s/Str
-   (s/optional-key :sap_performed_on) s/Str
-   (s/optional-key :best_u_value_for_doors) s/Str
-   (s/optional-key :pipe_lagging) s/Str
-   (s/optional-key :renewable_contribution_elec) s/Str
-   (s/optional-key :controls_strategy) s/Str
-   (s/optional-key :conservation_issues) s/Str
-   (s/optional-key :annual_space_heating_requirement) s/Str
-   (s/optional-key :air_tightness_performed_on) s/Str
-   (s/optional-key :flat_heat_loss_corridor) s/Str
-   (s/optional-key :total_rooms) s/Str
-   (s/optional-key :space_heating_requirement) s/Str
-   (s/optional-key :multiple_glazing_u_value) s/Str
-   (s/optional-key :best_u_value_party_walls) s/Str
-   (s/optional-key :best_u_value_for_roof) s/Str
-   (s/optional-key :frame_type_other) s/Str
-   (s/optional-key :electricity_meter_type) s/Str
-   (s/optional-key :category) s/Str
-   (s/optional-key :cellar_basement_issues) s/Str
-   (s/optional-key :profile_air_in_summer) s/Str
-   (s/optional-key :co_heating_performed_on) s/Str
-   (s/optional-key :profile_temperature_in_winter) s/Str
-   (s/optional-key :air_tightness_rate) s/Str
-   (s/optional-key :footprint ) s/Str})
+  {(s/optional-key :id) (s/maybe s/Str)
+   (s/optional-key :event_type) (s/maybe s/Str)
+   (s/optional-key :occupancy_under_18) (s/maybe s/Str)
+   (s/optional-key :onsite_days_new_build) (s/maybe s/Str)
+   (s/optional-key :flat_floor_heat_loss_type) (s/maybe s/Str)
+   (s/optional-key :best_u_value_for_walls) (s/maybe s/Str)
+   (s/optional-key :estimated_cost_new_build) (s/maybe s/Str)
+   (s/optional-key :ter) (s/maybe s/Str)
+   (s/optional-key :sap_version_year) (s/maybe s/Str)
+   (s/optional-key :total_envelope_area) (s/maybe s/Str)
+   (s/optional-key :sap_regulations_date) (s/maybe s/Str)
+   (s/optional-key :multiple_glazing_area_percentage) (s/maybe s/Str)
+   (s/optional-key :flat_floor_position) (s/maybe s/Str)
+   (s/optional-key :modelling_software_methods_used) (s/maybe s/Str)
+   (s/optional-key :co_heating_loss) (s/maybe s/Str)
+   (s/optional-key :sap_assessor) (s/maybe s/Str)
+   (s/optional-key :inadequate_heating) (s/maybe s/Str)
+   (s/optional-key :profile_noise) (s/maybe s/Str)
+   (s/optional-key :multiple_glazing_type) (s/maybe s/Str)
+   (s/optional-key :sap_software) (s/maybe s/Str)
+   (s/optional-key :profile_bus_summary_index) (s/maybe s/Str)
+   (s/optional-key :thermal_bridging_strategy) (s/maybe s/Str)
+   (s/optional-key :sealed_fireplaces) (s/maybe s/Str)
+   (s/optional-key :flat_floors_in_block) (s/maybe s/Str)
+   (s/optional-key :property_id) (s/maybe s/Str)
+   (s/optional-key :air_tightness_assessor) (s/maybe s/Str)
+   (s/optional-key :glazing_area_glass_only) (s/maybe s/Str)
+   (s/optional-key :final_cost_new_build) (s/maybe s/Str)
+   (s/optional-key :lighting_strategy) (s/maybe s/Str)
+   (s/optional-key :fabric_energy_efficiency) (s/maybe s/Str)
+   (s/optional-key :habitable_rooms) (s/maybe s/Str)
+   (s/optional-key :profile_needs) (s/maybe s/Str)
+   (s/optional-key :co_heating_assessor) (s/maybe s/Str)
+   (s/optional-key :best_u_value_for_other) (s/maybe s/Str)
+   (s/optional-key :renewable_contribution_heat) (s/maybe s/Str)
+   (s/optional-key :total_area) (s/maybe s/Str)
+   (s/optional-key :profile_temperature_in_summer) (s/maybe s/Str)
+   (s/optional-key :draught_proofing_location) (s/maybe s/Str)
+   (s/optional-key :heat_storage_present) (s/maybe s/Str)
+   (s/optional-key :profile_productivity) (s/maybe s/Str)
+   (s/optional-key :number_of_storeys) (s/maybe s/Str)
+   (s/optional-key :passive_solar_strategy) (s/maybe s/Str)
+   (s/optional-key :external_perimeter) (s/maybe s/Str)
+   (s/optional-key :intervention_completion_date) (s/maybe s/Str)
+   (s/optional-key :heat_loss_parameter_hlp) (s/maybe s/Str)
+   (s/optional-key :electricity_storage_present) (s/maybe s/Str)
+   (s/optional-key :roof_rooms_present) (s/maybe s/Str)
+   (s/optional-key :primary_energy_requirement) (s/maybe s/Str)
+   (s/optional-key :dwelling_u_value_other) (s/maybe s/Str)
+   (s/optional-key :ventilation_approach) (s/maybe s/Str)
+   (s/optional-key :construction_time_new_build) (s/maybe s/Str)
+   (s/optional-key :draught_proofing) (s/maybe s/Str)
+   (s/optional-key :frame_type) (s/maybe s/Str)
+   (s/optional-key :appliances_strategy) (s/maybe s/Str)
+   (s/optional-key :bedroom_count) (s/maybe s/Str)
+   (s/optional-key :co_heating_equipment) (s/maybe s/Str)
+   (s/optional-key :flat_heat_loss_corridor_other) (s/maybe s/Str)
+   (s/optional-key :ber) (s/maybe s/Str)
+   (s/optional-key :profile_image_to_visitors) (s/maybe s/Str)
+   (s/optional-key :air_tightness_equipment) (s/maybe s/Str)
+   (s/optional-key :innovation_approaches) (s/maybe s/Str)
+   (s/optional-key :orientation) (s/maybe s/Str)
+   (s/optional-key :total_budget_new_build) (s/maybe s/Str)
+   (s/optional-key :best_u_value_for_floors) (s/maybe s/Str)
+   (s/optional-key :completeness) (s/maybe s/Str)
+   (s/optional-key :onsite_days) (s/maybe s/Str)
+   (s/optional-key :water_saving_strategy) (s/maybe s/Str)
+   (s/optional-key :airtightness_and_ventilation_strategy) (s/maybe s/Str)
+   (s/optional-key :glazing_area_percentage) (s/maybe s/Str)
+   (s/optional-key :occupant_change) (s/maybe s/Str)
+   (s/optional-key :intention_ofpassvhaus) (s/maybe s/Str)
+   (s/optional-key :profile_health) (s/maybe s/Str)
+   (s/optional-key :occupancy_over_60) (s/maybe s/Str)
+   (s/optional-key :annual_heating_load) (s/maybe s/Str)
+   (s/optional-key :intervention_start_date) (s/maybe s/Str)
+   (s/optional-key :profile_design) (s/maybe s/Str)
+   (s/optional-key :gross_internal_area) (s/maybe s/Str)
+   (s/optional-key :profile_air_in_winter) (s/maybe s/Str)
+   (s/optional-key :intervention_description) (s/maybe s/Str)
+   (s/optional-key :mains_gas) (s/maybe s/Str)
+   (s/optional-key :profile_lightning) (s/maybe s/Str)
+   (s/optional-key :multiple_glazing_type_other) (s/maybe s/Str)
+   (s/optional-key :total_volume) (s/maybe s/Str)
+   (s/optional-key :sap_version_issue) (s/maybe s/Str)
+   (s/optional-key :profile_comfort) (s/maybe s/Str)
+   (s/optional-key :heated_habitable_rooms) (s/maybe s/Str)
+   (s/optional-key :open_fireplaces) (s/maybe s/Str)
+   (s/optional-key :occupancy_18_to_60) (s/maybe s/Str)
+   (s/optional-key :flat_length_sheltered_wall) (s/maybe s/Str)
+   (s/optional-key :planning_considerations) (s/maybe s/Str)
+   (s/optional-key :profile_bus_report_url) (s/maybe s/Str)
+   (s/optional-key :design_guidance) (s/maybe s/Str)
+   (s/optional-key :sap_rating) (s/maybe s/Str)
+   (s/optional-key :overheating_cooling_strategy) (s/maybe s/Str)
+   (s/optional-key :best_u_value_for_windows) (s/maybe s/Str)
+   (s/optional-key :used_passivehaus_principles) (s/maybe s/Str)
+   (s/optional-key :moisture_condensation_mould_strategy) (s/maybe s/Str)
+   (s/optional-key :ventilation_approach_other) (s/maybe s/Str)
+   (s/optional-key :sap_performed_on) (s/maybe s/Str)
+   (s/optional-key :best_u_value_for_doors) (s/maybe s/Str)
+   (s/optional-key :pipe_lagging) (s/maybe s/Str)
+   (s/optional-key :renewable_contribution_elec) (s/maybe s/Str)
+   (s/optional-key :controls_strategy) (s/maybe s/Str)
+   (s/optional-key :conservation_issues) (s/maybe s/Str)
+   (s/optional-key :annual_space_heating_requirement) (s/maybe s/Str)
+   (s/optional-key :air_tightness_performed_on) (s/maybe s/Str)
+   (s/optional-key :flat_heat_loss_corridor) (s/maybe s/Str)
+   (s/optional-key :total_rooms) (s/maybe s/Str)
+   (s/optional-key :space_heating_requirement) (s/maybe s/Str)
+   (s/optional-key :multiple_glazing_u_value) (s/maybe s/Str)
+   (s/optional-key :best_u_value_party_walls) (s/maybe s/Str)
+   (s/optional-key :best_u_value_for_roof) (s/maybe s/Str)
+   (s/optional-key :frame_type_other) (s/maybe s/Str)
+   (s/optional-key :electricity_meter_type) (s/maybe s/Str)
+   (s/optional-key :category) (s/maybe s/Str)
+   (s/optional-key :cellar_basement_issues) (s/maybe s/Str)
+   (s/optional-key :profile_air_in_summer) (s/maybe s/Str)
+   (s/optional-key :co_heating_performed_on) (s/maybe s/Str)
+   (s/optional-key :profile_temperature_in_winter) (s/maybe s/Str)
+   (s/optional-key :air_tightness_rate) (s/maybe s/Str)
+   (s/optional-key :footprint ) (s/maybe s/Str)})
 
 
 (def window-set-schema
-  {(s/optional-key :window_type) s/Str
-   (s/optional-key :frame_type) s/Str
-   (s/optional-key :frame_type_other) s/Str
-   (s/optional-key :percentage_glazing) s/Str
-   (s/optional-key :area) s/Str
-   (s/optional-key :location) s/Str
-   (s/optional-key :uvalue) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :window_type) (s/maybe s/Str)
+   (s/optional-key :frame_type) (s/maybe s/Str)
+   (s/optional-key :frame_type_other) (s/maybe s/Str)
+   (s/optional-key :percentage_glazing) (s/maybe s/Str)
+   (s/optional-key :area) (s/maybe s/Str)
+   (s/optional-key :location) (s/maybe s/Str)
+   (s/optional-key :uvalue) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def thermal-images-schema
   {})
 
 (def storey-schema
-  {(s/optional-key :storey_type) s/Str
-   (s/optional-key :storey) s/Str
-   (s/optional-key :heat_loss_w_per_k) s/Str
-   (s/optional-key :heat_requirement_kwth_per_year) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :storey_type) (s/maybe s/Str)
+   (s/optional-key :storey) (s/maybe s/Str)
+   (s/optional-key :heat_loss_w_per_k) (s/maybe s/Str)
+   (s/optional-key :heat_requirement_kwth_per_year) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def wall-schema
-  {(s/optional-key :wall_type) s/Str
-   (s/optional-key :construction) s/Str
-   (s/optional-key :construction_other) s/Str
-   (s/optional-key :insulation) s/Str
-   (s/optional-key :insulation_date) s/Str
-   (s/optional-key :insulation_type) s/Str
-   (s/optional-key :insulation_thickness) s/Str
-   (s/optional-key :insulation_product) s/Str
-   (s/optional-key :uvalue) s/Str
-   (s/optional-key :location) s/Str
-   (s/optional-key :area) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :wall_type) (s/maybe s/Str)
+   (s/optional-key :construction) (s/maybe s/Str)
+   (s/optional-key :construction_other) (s/maybe s/Str)
+   (s/optional-key :insulation) (s/maybe s/Str)
+   (s/optional-key :insulation_date) (s/maybe s/Str)
+   (s/optional-key :insulation_type) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness) (s/maybe s/Str)
+   (s/optional-key :insulation_product) (s/maybe s/Str)
+   (s/optional-key :uvalue) (s/maybe s/Str)
+   (s/optional-key :location) (s/maybe s/Str)
+   (s/optional-key :area) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 
 (def roof-schema
-  {(s/optional-key :roof_type) s/Str
-   (s/optional-key :construction) s/Str
-   (s/optional-key :construction_other) s/Str
-   (s/optional-key :insulation_location_one) s/Str
-   (s/optional-key :insulation_location_one_other) s/Str
-   (s/optional-key :insulation_location_two) s/Str
-   (s/optional-key :insulation_location_two_other) s/Str
-   (s/optional-key :insulation_thickness_one) s/Str
-   (s/optional-key :insulation_thickness_one_other) s/Str
-   (s/optional-key :insulation_thickness_two) s/Str
-   (s/optional-key :insulation_thickness_two_other) s/Str
-   (s/optional-key :insulation_date) s/Str
-   (s/optional-key :insulation_type) s/Str
-   (s/optional-key :insulation_product) s/Str
-   (s/optional-key :uvalue) s/Str
-   (s/optional-key :uvalue_derived) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :roof_type) (s/maybe s/Str)
+   (s/optional-key :construction) (s/maybe s/Str)
+   (s/optional-key :construction_other) (s/maybe s/Str)
+   (s/optional-key :insulation_location_one) (s/maybe s/Str)
+   (s/optional-key :insulation_location_one_other) (s/maybe s/Str)
+   (s/optional-key :insulation_location_two) (s/maybe s/Str)
+   (s/optional-key :insulation_location_two_other) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_one) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_one_other) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_two) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_two_other) (s/maybe s/Str)
+   (s/optional-key :insulation_date) (s/maybe s/Str)
+   (s/optional-key :insulation_type) (s/maybe s/Str)
+   (s/optional-key :insulation_product) (s/maybe s/Str)
+   (s/optional-key :uvalue) (s/maybe s/Str)
+   (s/optional-key :uvalue_derived) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 
 (def floor-schema
-  {(s/optional-key :floor_type) s/Str
-   (s/optional-key :construction) s/Str
-   (s/optional-key :construction_other) s/Str
-   (s/optional-key :insulation_thickness_one) s/Str
-   (s/optional-key :insulation_thickness_two) s/Str
-   (s/optional-key :insulation_type) s/Str
-   (s/optional-key :insulation_product) s/Str
-   (s/optional-key :uvalue) s/Str
-   (s/optional-key :uvalue_derived) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :floor_type) (s/maybe s/Str)
+   (s/optional-key :construction) (s/maybe s/Str)
+   (s/optional-key :construction_other) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_one) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_two) (s/maybe s/Str)
+   (s/optional-key :insulation_type) (s/maybe s/Str)
+   (s/optional-key :insulation_product) (s/maybe s/Str)
+   (s/optional-key :uvalue) (s/maybe s/Str)
+   (s/optional-key :uvalue_derived) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def roof-room-schema
-  {(s/optional-key :location) s/Str
-   (s/optional-key :age) s/Str
-   (s/optional-key :insulation_placement) s/Str
-   (s/optional-key :insulation_thickness_one) s/Str
-   (s/optional-key :insulation_thickness_one_other) s/Str
-   (s/optional-key :insulation_thickness_two) s/Str
-   (s/optional-key :insulation_thickness_two_other) s/Str
-   (s/optional-key :insulation_date) s/Str
-   (s/optional-key :insulation_type) s/Str
-   (s/optional-key :insulation_product) s/Str
-   (s/optional-key :uvalue) s/Str
-   (s/optional-key :uvalue_derived) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :location) (s/maybe s/Str)
+   (s/optional-key :age) (s/maybe s/Str)
+   (s/optional-key :insulation_placement) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_one) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_one_other) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_two) (s/maybe s/Str)
+   (s/optional-key :insulation_thickness_two_other) (s/maybe s/Str)
+   (s/optional-key :insulation_date) (s/maybe s/Str)
+   (s/optional-key :insulation_type) (s/maybe s/Str)
+   (s/optional-key :insulation_product) (s/maybe s/Str)
+   (s/optional-key :uvalue) (s/maybe s/Str)
+   (s/optional-key :uvalue_derived) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 
 (def door-set-schema
-  {(s/optional-key :door_type) s/Str
-   (s/optional-key :door_type_other) s/Str
-   (s/optional-key :frame_type) s/Str
-   (s/optional-key :frame_type_other) s/Str
-   (s/optional-key :percentage_glazing) s/Str
-   (s/optional-key :area) s/Str
-   (s/optional-key :location) s/Str
-   (s/optional-key :uvalue) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :door_type) (s/maybe s/Str)
+   (s/optional-key :door_type_other) (s/maybe s/Str)
+   (s/optional-key :frame_type) (s/maybe s/Str)
+   (s/optional-key :frame_type_other) (s/maybe s/Str)
+   (s/optional-key :percentage_glazing) (s/maybe s/Str)
+   (s/optional-key :area) (s/maybe s/Str)
+   (s/optional-key :location) (s/maybe s/Str)
+   (s/optional-key :uvalue) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def extension-schema
-  {(s/optional-key :age) s/Str
-   (s/optional-key :construction_date) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :age) (s/maybe s/Str)
+   (s/optional-key :construction_date) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def conservatory-schema
-  {(s/optional-key :conservatory_type) s/Str
-   (s/optional-key :area) s/Str
-   (s/optional-key :double_glazed) s/Str
-   (s/optional-key :glazed_perimeter) s/Str
-   (s/optional-key :height) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :conservatory_type) (s/maybe s/Str)
+   (s/optional-key :area) (s/maybe s/Str)
+   (s/optional-key :double_glazed) (s/maybe s/Str)
+   (s/optional-key :glazed_perimeter) (s/maybe s/Str)
+   (s/optional-key :height) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def wind-turbine-schema
-  {(s/optional-key :turbine_type) s/Str
-   (s/optional-key :turbine_type_other) s/Str
-   (s/optional-key :make_model) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :inverter_type) s/Str
-   (s/optional-key :inverter_make_model) s/Str
-   (s/optional-key :inverter_mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :capacity) s/Str
-   (s/optional-key :hub_height) s/Str
-   (s/optional-key :height_above_canpoy) s/Str
-   (s/optional-key :wind_speed) s/Str
-   (s/optional-key :wind_speed_info_source) s/Str
-   (s/optional-key :wind_speed_info_source_other) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :turbine_type) (s/maybe s/Str)
+   (s/optional-key :turbine_type_other) (s/maybe s/Str)
+   (s/optional-key :make_model) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :inverter_type) (s/maybe s/Str)
+   (s/optional-key :inverter_make_model) (s/maybe s/Str)
+   (s/optional-key :inverter_mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :height_above_canopy) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :capacity) (s/maybe s/Str)
+   (s/optional-key :hub_height) (s/maybe s/Str)
+   (s/optional-key :height_above_canpoy) (s/maybe s/Str)
+   (s/optional-key :wind_speed) (s/maybe s/Str)
+   (s/optional-key :wind_speed_info_source) (s/maybe s/Str)
+   (s/optional-key :wind_speed_info_source_other) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_requirement_met) (s/maybe s/Str)
+   (s/optional-key :est_percentage_exported) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def small-hydro-schema
-  {(s/optional-key :hydro_type) s/Str
-   (s/optional-key :make_model) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :inverter_type) s/Str
-   (s/optional-key :inverter_make_model) s/Str
-   (s/optional-key :inverter_mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :capacity) s/Str
-   (s/optional-key :head_drop) s/Str
-   (s/optional-key :design_flow) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :hydro_type) (s/maybe s/Str)
+   (s/optional-key :make_model) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :inverter_type) (s/maybe s/Str)
+   (s/optional-key :inverter_make_model) (s/maybe s/Str)
+   (s/optional-key :inverter_mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :capacity) (s/maybe s/Str)
+   (s/optional-key :head_drop) (s/maybe s/Str)
+   (s/optional-key :design_flow) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_requirement_met) (s/maybe s/Str)
+   (s/optional-key :est_percentage_exported) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def photovoltaic-schema
-  {(s/optional-key :percentage_roof_covered) s/Str
-   (s/optional-key :photovoltaic_type) s/Str
-   (s/optional-key :photovoltaic_type_other) s/Str
-   (s/optional-key :make_model) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :efficiency) s/Str
-   (s/optional-key :inverter_type) s/Str
-   (s/optional-key :inverter_make_model) s/Str
-   (s/optional-key :inverter_mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :capacity) s/Str
-   (s/optional-key :area) s/Str
-   (s/optional-key :orientation) s/Str
-   (s/optional-key :pitch) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :performance) s/Str})
+  {(s/optional-key :percentage_roof_covered) (s/maybe s/Str)
+   (s/optional-key :photovoltaic_type) (s/maybe s/Str)
+   (s/optional-key :photovoltaic_type_other) (s/maybe s/Str)
+   (s/optional-key :make_model) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :efficiency) (s/maybe s/Str)
+   (s/optional-key :inverter_type) (s/maybe s/Str)
+   (s/optional-key :inverter_make_model) (s/maybe s/Str)
+   (s/optional-key :inverter_mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :capacity) (s/maybe s/Str)
+   (s/optional-key :area) (s/maybe s/Str)
+   (s/optional-key :orientation) (s/maybe s/Str)
+   (s/optional-key :pitch) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_requirement_met) (s/maybe s/Str)
+   (s/optional-key :est_percentage_exported) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :performance) (s/maybe s/Str)})
 
 (def solar-thermal-schema
-  {(s/optional-key :solar_type) s/Str
-   (s/optional-key :solar_type_other) s/Str
-   (s/optional-key :make_model) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :capacity) s/Str
-   (s/optional-key :area) s/Str
-   (s/optional-key :orientation) s/Str
-   (s/optional-key :pitch) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :solar_type) (s/maybe s/Str)
+   (s/optional-key :solar_type_other) (s/maybe s/Str)
+   (s/optional-key :make_model) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :capacity) (s/maybe s/Str)
+   (s/optional-key :area) (s/maybe s/Str)
+   (s/optional-key :orientation) (s/maybe s/Str)
+   (s/optional-key :pitch) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_requirement_met) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def heat-pump-schema
-  {(s/optional-key :heat_pump_type) s/Str
-   (s/optional-key :make_model) s/Str
-   (s/optional-key :cop) s/Str
-   (s/optional-key :spf) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :heat_source_type) s/Str
-   (s/optional-key :heat_source_type_other) s/Str
-   (s/optional-key :depth) s/Str
-   (s/optional-key :geology) s/Str
-   (s/optional-key :capacity) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :dhw) s/Str
-   (s/optional-key :est_percentage_dhw_requirement_met) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :heat_pump_type) (s/maybe s/Str)
+   (s/optional-key :make_model) (s/maybe s/Str)
+   (s/optional-key :cop) (s/maybe s/Str)
+   (s/optional-key :spf) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :heat_source_type) (s/maybe s/Str)
+   (s/optional-key :heat_source_type_other) (s/maybe s/Str)
+   (s/optional-key :depth) (s/maybe s/Str)
+   (s/optional-key :geology) (s/maybe s/Str)
+   (s/optional-key :capacity) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_requirement_met) (s/maybe s/Str)
+   (s/optional-key :dhw) (s/maybe s/Str)
+   (s/optional-key :est_percentage_dhw_requirement_met) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def biomass-schema
-  {(s/optional-key :biomass_type) s/Str
-   (s/optional-key :model) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :capacity) s/Str
-   (s/optional-key :percentage_efficiency_from_spec) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_requirement_met) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :biomass_type) (s/maybe s/Str)
+   (s/optional-key :model) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :capacity) (s/maybe s/Str)
+   (s/optional-key :percentage_efficiency_from_spec) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_requirement_met) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def chp-schema
-  {(s/optional-key :chp_type) s/Str
-   (s/optional-key :model) s/Str
-   (s/optional-key :mcs_no) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_mcs_no) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :capacity_elec) s/Str
-   (s/optional-key :capacity_thermal) s/Str
-   (s/optional-key :est_annual_generation) s/Str
-   (s/optional-key :est_percentage_thermal_requirement_met) s/Str
-   (s/optional-key :est_percentage_exported) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :chp_type) (s/maybe s/Str)
+   (s/optional-key :model) (s/maybe s/Str)
+   (s/optional-key :mcs_no) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_mcs_no) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :capacity_elec) (s/maybe s/Str)
+   (s/optional-key :capacity_thermal) (s/maybe s/Str)
+   (s/optional-key :est_annual_generation) (s/maybe s/Str)
+   (s/optional-key :est_percentage_thermal_requirement_met) (s/maybe s/Str)
+   (s/optional-key :est_percentage_exported) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def heating-system-schema
-  {(s/optional-key :heating_type) s/Str
-   (s/optional-key :heat_source) s/Str
-   (s/optional-key :heat_transport) s/Str
-   (s/optional-key :heat_delivery) s/Str
-   (s/optional-key :heat_delivery_source) s/Str
-   (s/optional-key :efficiency_derivation) s/Str
-   (s/optional-key :boiler_type) s/Str
-   (s/optional-key :boiler_type_other) s/Str
-   (s/optional-key :fan_flue) s/Str
-   (s/optional-key :open_flue) s/Str
-   (s/optional-key :fuel) s/Str
-   (s/optional-key :heating_system) s/Str
-   (s/optional-key :heating_system_other) s/Str
-   (s/optional-key :heating_system_type) s/Str
-   (s/optional-key :heating_system_type_other) s/Str
-   (s/optional-key :heating_system_solid_fuel) s/Str
-   (s/optional-key :heating_system_solid_fuel_other) s/Str
-   (s/optional-key :bed_index) s/Str
-   (s/optional-key :make_and_model) s/Str
-   (s/optional-key :controls) s/Str
-   (s/optional-key :controls_other) s/Str
-   (s/optional-key :controls_make_and_model) s/Str
-   (s/optional-key :emitter) s/Str
-   (s/optional-key :trvs_on_emitters) s/Str
-   (s/optional-key :use_hours_per_week) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_engineers_name) s/Str
-   (s/optional-key :installer_registration_number) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :inspector) s/Str
-   (s/optional-key :inspector_engineers_name) s/Str
-   (s/optional-key :inspector_registration_number) s/Str
-   (s/optional-key :inspection_date) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :efficiency) s/Str})
+  {(s/optional-key :heating_type) (s/maybe s/Str)
+   (s/optional-key :heat_source) (s/maybe s/Str)
+   (s/optional-key :heat_transport) (s/maybe s/Str)
+   (s/optional-key :heat_delivery) (s/maybe s/Str)
+   (s/optional-key :heat_delivery_source) (s/maybe s/Str)
+   (s/optional-key :efficiency_derivation) (s/maybe s/Str)
+   (s/optional-key :boiler_type) (s/maybe s/Str)
+   (s/optional-key :boiler_type_other) (s/maybe s/Str)
+   (s/optional-key :fan_flue) (s/maybe s/Str)
+   (s/optional-key :open_flue) (s/maybe s/Str)
+   (s/optional-key :fuel) (s/maybe s/Str)
+   (s/optional-key :heating_system) (s/maybe s/Str)
+   (s/optional-key :heating_system_other) (s/maybe s/Str)
+   (s/optional-key :heating_system_type) (s/maybe s/Str)
+   (s/optional-key :heating_system_type_other) (s/maybe s/Str)
+   (s/optional-key :heating_system_solid_fuel) (s/maybe s/Str)
+   (s/optional-key :heating_system_solid_fuel_other) (s/maybe s/Str)
+   (s/optional-key :bed_index) (s/maybe s/Str)
+   (s/optional-key :make_and_model) (s/maybe s/Str)
+   (s/optional-key :controls) (s/maybe s/Str)
+   (s/optional-key :controls_other) (s/maybe s/Str)
+   (s/optional-key :controls_make_and_model) (s/maybe s/Str)
+   (s/optional-key :emitter) (s/maybe s/Str)
+   (s/optional-key :trvs_on_emitters) (s/maybe s/Str)
+   (s/optional-key :use_hours_per_week) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_engineers_name) (s/maybe s/Str)
+   (s/optional-key :installer_registration_number) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :inspector) (s/maybe s/Str)
+   (s/optional-key :inspector_engineers_name) (s/maybe s/Str)
+   (s/optional-key :inspector_registration_number) (s/maybe s/Str)
+   (s/optional-key :inspection_date) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :efficiency) (s/maybe s/Str)})
 
 (def hot-water-system-schema
-  {(s/optional-key :dhw_type) s/Str
-   (s/optional-key :fuel) s/Str
-   (s/optional-key :fuel_other) s/Str
-   (s/optional-key :immersion) s/Str
-   (s/optional-key :cylinder_capacity) s/Str
-   (s/optional-key :cylinder_capacity_other) s/Str
-   (s/optional-key :cylinder_insulation_type) s/Str
-   (s/optional-key :cylinder_insulation_type_other) s/Str
-   (s/optional-key :cylinder_insulation_thickness) s/Str
-   (s/optional-key :cylinder_insulation_thickness_other) s/Str
-   (s/optional-key :cylinder_thermostat) s/Str
-   (s/optional-key :controls_same_for_all_zones) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :dhw_type) (s/maybe s/Str)
+   (s/optional-key :fuel) (s/maybe s/Str)
+   (s/optional-key :fuel_other) (s/maybe s/Str)
+   (s/optional-key :immersion) (s/maybe s/Str)
+   (s/optional-key :cylinder_capacity) (s/maybe s/Str)
+   (s/optional-key :cylinder_capacity_other) (s/maybe s/Str)
+   (s/optional-key :cylinder_insulation_type) (s/maybe s/Str)
+   (s/optional-key :cylinder_insulation_type_other) (s/maybe s/Str)
+   (s/optional-key :cylinder_insulation_thickness) (s/maybe s/Str)
+   (s/optional-key :cylinder_insulation_thickness_other) (s/maybe s/Str)
+   (s/optional-key :cylinder_thermostat) (s/maybe s/Str)
+   (s/optional-key :controls_same_for_all_zones) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def low-energy-light-schema
-  {(s/optional-key :light_type) s/Str
-   (s/optional-key :light_type_other) s/Str
-   (s/optional-key :bed_index) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :proportion) s/Str
-   })
+  {(s/optional-key :light_type) (s/maybe s/Str)
+   (s/optional-key :light_type_other) (s/maybe s/Str)
+   (s/optional-key :bed_index) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :proportion) (s/maybe s/Str)})
 
 (def ventilation-system-schema
-  {(s/optional-key :approach) s/Str
-   (s/optional-key :approach_other) s/Str
-   (s/optional-key :ventilation_type) s/Str
-   (s/optional-key :ventilation_type_other) s/Str
-   (s/optional-key :mechanical_with_heat_recovery) s/Str
-   (s/optional-key :manufacturer) s/Str
-   (s/optional-key :ductwork_type) s/Str
-   (s/optional-key :ductwork_type_other) s/Str
-   (s/optional-key :controls) s/Str
-   (s/optional-key :controls_other) s/Str
-   (s/optional-key :manual_control_location) s/Str
-   (s/optional-key :operational_settings) s/Str
-   (s/optional-key :operational_settings_other) s/Str
-   (s/optional-key :installer) s/Str
-   (s/optional-key :installer_engineers_name) s/Str
-   (s/optional-key :installer_registration_number) s/Str
-   (s/optional-key :commissioning_date) s/Str
-   (s/optional-key :total_installed_area) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :approach) (s/maybe s/Str)
+   (s/optional-key :approach_other) (s/maybe s/Str)
+   (s/optional-key :ventilation_type) (s/maybe s/Str)
+   (s/optional-key :ventilation_type_other) (s/maybe s/Str)
+   (s/optional-key :mechanical_with_heat_recovery) (s/maybe s/Str)
+   (s/optional-key :manufacturer) (s/maybe s/Str)
+   (s/optional-key :ductwork_type) (s/maybe s/Str)
+   (s/optional-key :ductwork_type_other) (s/maybe s/Str)
+   (s/optional-key :controls) (s/maybe s/Str)
+   (s/optional-key :controls_other) (s/maybe s/Str)
+   (s/optional-key :manual_control_location) (s/maybe s/Str)
+   (s/optional-key :operational_settings) (s/maybe s/Str)
+   (s/optional-key :operational_settings_other) (s/maybe s/Str)
+   (s/optional-key :installer) (s/maybe s/Str)
+   (s/optional-key :installer_engineers_name) (s/maybe s/Str)
+   (s/optional-key :installer_registration_number) (s/maybe s/Str)
+   (s/optional-key :commissioning_date) (s/maybe s/Str)
+   (s/optional-key :total_installed_area) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    })
 
 (def airflow-measurement-schema
-  {(s/optional-key :reference) s/Str
-   (s/optional-key :system) s/Str
-   (s/optional-key :inspector) s/Str
-   (s/optional-key :inspector_engineers_name) s/Str
-   (s/optional-key :inspector_registration_number) s/Str
-   (s/optional-key :inspection_date) s/Str
-   (s/optional-key :created_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :updated_at) s/Str ;; sc/ISO-Date-Time
-   (s/optional-key :measured_low) s/Str
-   (s/optional-key :design_low) s/Str
-   (s/optional-key :measured_high) s/Str
-   (s/optional-key :design_high) s/Str})
+  {(s/optional-key :reference) (s/maybe s/Str)
+   (s/optional-key :system) (s/maybe s/Str)
+   (s/optional-key :inspector) (s/maybe s/Str)
+   (s/optional-key :inspector_engineers_name) (s/maybe s/Str)
+   (s/optional-key :inspector_registration_number) (s/maybe s/Str)
+   (s/optional-key :inspection_date) (s/maybe s/Str)
+   (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :measured_low) (s/maybe s/Str)
+   (s/optional-key :design_low) (s/maybe s/Str)
+   (s/optional-key :measured_high) (s/maybe s/Str)
+   (s/optional-key :design_high) (s/maybe s/Str)})
 
 (def Profile
-  {(s/optional-key :property_code) s/Str
-   (s/optional-key :entity_id) s/Str
-   (s/optional-key :id) s/Str
-   (s/optional-key :timestamp) s/Str ;; sc/ISO-Date-Time
+  {(s/optional-key :property_code) (s/maybe s/Str)
+   (s/optional-key :entity_id) (s/maybe s/Str)
+   (s/optional-key :id) (s/maybe s/Str)
+   (s/optional-key :project_id) (s/maybe s/Str)
+   (s/optional-key :timestamp) (s/maybe s/Str) ;; sc/ISO-Date-Time
    (s/optional-key :profile_data) profile-data-schema
    (s/optional-key :window_sets) [window-set-schema]
    (s/optional-key :thermal_images) [thermal-images-schema]
@@ -610,27 +611,27 @@
    (s/optional-key :airflow_measurements) [airflow-measurement-schema]})
 
 (def BaseEntity
-  {:project_id s/Str
-   :property_code s/Str
+  {:project_id (s/maybe s/Str)
+   :property_code (s/maybe s/Str)
    (s/optional-key :device_ids) [s/Str]
    (s/optional-key :metering_point_ids) [s/Str]
-   (s/optional-key :address_country) s/Str
-   (s/optional-key :address_county) s/Str
-   (s/optional-key :address_region) s/Str
-   (s/optional-key :address_street_two) s/Str
-   (s/optional-key :name) s/Str
+   (s/optional-key :address_country) (s/maybe s/Str)
+   (s/optional-key :address_county) (s/maybe s/Str)
+   (s/optional-key :address_region) (s/maybe s/Str)
+   (s/optional-key :address_street_two) (s/maybe s/Str)
+   (s/optional-key :name) (s/maybe s/Str)
    (s/optional-key :notes) [s/Str]
    (s/optional-key :profile) [Profile]
    (s/optional-key :property_data) {s/Keyword s/Any}
-   (s/optional-key :retrofit_completion_date) s/Str
-   (s/optional-key :user_id) s/Str})
+   (s/optional-key :retrofit_completion_date) (s/maybe s/Str)
+   (s/optional-key :user_id) (s/maybe s/Str)})
 
 (def Entity
   (s/either
    BaseEntity
    (merge
     BaseEntity
-    {:entity_id s/Str
+    {:entity_id (s/maybe s/Str)
      (s/optional-key :calculated_fields_labels) {s/Str s/Str}
      (s/optional-key :calculated_fields_last_calc) {s/Str s/Str}
      (s/optional-key :calculated_fields_values) {s/Str s/Str}
