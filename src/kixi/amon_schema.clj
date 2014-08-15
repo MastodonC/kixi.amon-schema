@@ -541,8 +541,7 @@
    (s/optional-key :bed_index) (s/maybe s/Str)
    (s/optional-key :created_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
    (s/optional-key :updated_at) (s/maybe s/Str) ;; sc/ISO-Date-Time
-   (s/optional-key :proportion) (s/maybe s/Str)
-   })
+   (s/optional-key :proportion) (s/maybe s/Str)})
 
 (def ventilation-system-schema
   {(s/optional-key :approach) (s/maybe s/Str)
