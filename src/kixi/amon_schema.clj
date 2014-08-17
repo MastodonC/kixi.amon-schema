@@ -92,7 +92,7 @@
     BaseDevice)))
 
 (def profile-data-schema
-  {(s/optional-key :id) (s/maybe s/Str)
+  {(s/optional-key :profile_id) (s/maybe s/Str)
    (s/optional-key :event_type) (s/maybe s/Str)
    (s/optional-key :occupancy_under_18) (s/maybe s/Str)
    (s/optional-key :onsite_days_new_build) (s/maybe s/Str)
@@ -583,7 +583,7 @@
 (def Profile
   {(s/optional-key :property_code) (s/maybe s/Str)
    (s/optional-key :entity_id) (s/maybe s/Str)
-   (s/optional-key :id) (s/maybe s/Str)
+   (s/optional-key :profile_id) (s/maybe s/Str)
    (s/optional-key :project_id) (s/maybe s/Str)
    (s/optional-key :timestamp) (s/maybe s/Str) ;; sc/ISO-Date-Time
    (s/optional-key :profile_data) profile-data-schema
@@ -611,20 +611,27 @@
    (s/optional-key :airflow_measurements) [airflow-measurement-schema]})
 
 (def BaseEntity
-  {:project_id (s/maybe s/Str)
-   :property_code (s/maybe s/Str)
-   (s/optional-key :device_ids) [s/Str]
-   (s/optional-key :metering_point_ids) [s/Str]
+  {:property_code (s/maybe s/Str)
    (s/optional-key :address_country) (s/maybe s/Str)
    (s/optional-key :address_county) (s/maybe s/Str)
    (s/optional-key :address_region) (s/maybe s/Str)
    (s/optional-key :address_street_two) (s/maybe s/Str)
    (s/optional-key :name) (s/maybe s/Str)
-   (s/optional-key :notes) [s/Str]
-   (s/optional-key :profile) [Profile]
+   (s/optional-key :retrofit_completion_date) (s/maybe s/Str) ;; sc/ISO-Date-Time
+   (s/optional-key :user_id) (s/maybe s/Str)
+   (s/optional-key :project_id) (s/maybe s/Str)
+   (s/optional-key :profile_data_event_type) (s/maybe s/Str)
+
    (s/optional-key :property_data) {s/Keyword s/Any}
-   (s/optional-key :retrofit_completion_date) (s/maybe s/Str)
-   (s/optional-key :user_id) (s/maybe s/Str)})
+
+   (s/optional-key :csv_uploads) [s/Str]
+   (s/optional-key :device_ids) [s/Str]
+   (s/optional-key :devices) [Device]
+   (s/optional-key :documents) [s/Str]
+   (s/optional-key :metering_point_ids) [s/Str]
+   (s/optional-key :notes) [s/Str]
+   (s/optional-key :photos) [s/Str]
+   (s/optional-key :profiles) [Profile]})
 
 (def Entity
   (s/either
@@ -632,12 +639,9 @@
    (merge
     BaseEntity
     {:entity_id (s/maybe s/Str)
-     (s/optional-key :calculated_fields_labels) {s/Str s/Str}
-     (s/optional-key :calculated_fields_last_calc) {s/Str s/Str}
-     (s/optional-key :calculated_fields_values) {s/Str s/Str}
-     (s/optional-key :csv_uploads) [s/Str]
-     (s/optional-key :documents) [s/Str]
-     (s/optional-key :photos) [s/Str]})))
+     (s/optional-key :calculated_fields_labels) {s/Any s/Str}
+     (s/optional-key :calculated_fields_last_calc) {s/Any s/Str}
+     (s/optional-key :calculated_fields_values) {s/Any s/Str}})))
 
 (def BaseProject
   {:name s/Str
