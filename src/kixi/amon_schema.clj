@@ -622,7 +622,7 @@
    (s/optional-key :project_id) (s/maybe s/Str)
    (s/optional-key :profile_data_event_type) (s/maybe s/Str)
 
-   (s/optional-key :property_data) {s/Keyword s/Any}
+   (s/optional-key :property_data) {s/Keyword s/Str}
 
    (s/optional-key :csv_uploads) [s/Str]
    (s/optional-key :device_ids) [s/Str]
