@@ -162,6 +162,7 @@
    (s/optional-key :airtightness_and_ventilation_strategy) (s/maybe s/Str)
    (s/optional-key :glazing_area_percentage) (s/maybe s/Str)
    (s/optional-key :occupant_change) (s/maybe s/Str)
+   (s/optional-key :occupancy_total) (s/maybe s/Str)
    (s/optional-key :intention_ofpassvhaus) (s/maybe s/Str)
    (s/optional-key :profile_health) (s/maybe s/Str)
    (s/optional-key :occupancy_over_60) (s/maybe s/Str)
