@@ -611,16 +611,14 @@
    (s/optional-key :ventilation_systems) [ventilation-system-schema]
    (s/optional-key :airflow_measurements) [airflow-measurement-schema]})
 
-(def BaseEntity
-  {:property_code (s/maybe s/Str)
-   (s/optional-key :address_country) (s/maybe s/Str)
+(def CoreEntity
+  {(s/optional-key :address_country) (s/maybe s/Str)
    (s/optional-key :address_county) (s/maybe s/Str)
    (s/optional-key :address_region) (s/maybe s/Str)
    (s/optional-key :address_street_two) (s/maybe s/Str)
    (s/optional-key :name) (s/maybe s/Str)
    (s/optional-key :retrofit_completion_date) (s/maybe s/Str) ;; sc/ISO-Date-Time
    (s/optional-key :user_id) (s/maybe s/Str)
-   (s/optional-key :project_id) (s/maybe s/Str)
    (s/optional-key :profile_data_event_type) (s/maybe s/Str)
 
    (s/optional-key :property_data) {s/Keyword s/Str}
@@ -634,15 +632,42 @@
    (s/optional-key :photos) [s/Str]
    (s/optional-key :profiles) [Profile]})
 
+(def EntityId
+  {:entity_id s/Str
+   (s/optional-key :property_code) (s/maybe s/Str)
+   (s/optional-key :project_id) (s/maybe s/Str)})
+
+(def PropertyCodeProjectId
+  {:property_code s/Str
+   :project_id s/Str
+   (s/optional-key :entity_id) (s/maybe s/Str)})
+
+(def BaseEntity
+  (s/either
+   (merge
+    EntityId
+    CoreEntity)
+   (merge
+    PropertyCodeProjectId
+    CoreEntity)))
+
+(def OutputEntityFields
+  {(s/optional-key :calculated_fields_labels) {s/Any s/Str}
+   (s/optional-key :calculated_fields_last_calc) {s/Any s/Str}
+   (s/optional-key :calculated_fields_values) {s/Any s/Str}})
+
 (def Entity
   (s/either
    BaseEntity
-   (merge
-    BaseEntity
-    {:entity_id (s/maybe s/Str)
-     (s/optional-key :calculated_fields_labels) {s/Any s/Str}
-     (s/optional-key :calculated_fields_last_calc) {s/Any s/Str}
-     (s/optional-key :calculated_fields_values) {s/Any s/Str}})))
+   (s/either
+    (merge
+     EntityId
+     CoreEntity
+     OutputEntityFields)
+    (merge
+     PropertyCodeProjectId
+     CoreEntity
+     OutputEntityFields))))
 
 (def BaseProject
   {:name s/Str
