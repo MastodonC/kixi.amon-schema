@@ -621,16 +621,16 @@
    (s/optional-key :user_id) (s/maybe s/Str)
    (s/optional-key :profile_data_event_type) (s/maybe s/Str)
 
-   (s/optional-key :property_data) {s/Keyword s/Str}
+   (s/optional-key :property_data) {s/Keyword s/Any}
 
    (s/optional-key :csv_uploads) [s/Str]
    (s/optional-key :device_ids) [s/Str]
-   (s/optional-key :devices) [Device]
+   (s/optional-key :devices) s/Any
    (s/optional-key :documents) [s/Str]
    (s/optional-key :metering_point_ids) [s/Str]
    (s/optional-key :notes) [s/Str]
    (s/optional-key :photos) [s/Str]
-   (s/optional-key :profiles) [Profile]})
+   (s/optional-key :profiles) s/Any})
 
 (def EntityId
   {:entity_id s/Str
